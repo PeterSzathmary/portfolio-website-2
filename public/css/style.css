@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+}
+
+html,
+body {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+h3,
+h4,
+li {
+    text-align: center;
+}
+
+/* TODO: change font sizes */
+ul {
+    list-style-type: none;
+}
+
+footer {
+    background-color: rgb(40, 40, 40);
+    color: #fff;
+    padding: 14px 0 14px 0;
+    text-align: center;
+}
+
+/* #region Menu */
+.menu {
+    background-color: rgb(40, 40, 40);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu a {
+    color: #ffffff;
+    display: inline-block;
+    width: 150px;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 0 14px 0;
+}
+
+.menu a:hover {
+    background-color: #82b74b;
+    color: #000;
+}
+
+.menu-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
+}
+/* #endregion */
+
+/* Home Page */
+#place-for-canvas,
+.main {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* #region About Me */
+.about-me {
+    margin: 0 14px 0 14px;
+    text-align: center;
+}
+
+.about-me li {
+    text-align: center;
+    padding: 14px;
+}
+
+.about-me li:nth-child(even) {
+    color: #405d27;
+}
+
+.about-me li:nth-child(odd) {
+    color: #c1946a;
+}
+
+#my-picture {
+    border: 5px solid black;
+    border-radius: 50%;
+    display: block;
+    margin: 14px auto 64px auto;
+    width: 25vh;
+}
+
+.main-about {
+    display: flex;
+    flex-flow: column;
+    overflow-y: scroll;
+}
+/* #endregion */
+
+/* #region Journal */
+.journal {
+    margin: 14px 14px 0 14px;
+}
+
+.journal-top {
+    display: flex;
+}
+
+.journal-date {
+    padding: 0 0 0 28px;
+}
+
+.journal-day {
+    margin-left: 42px;
+}
+
+/*.journal-content {
+}*/
+/* #endregion */
+
+/* #region Media Styles */
+@media screen and (max-width: 960px) {
+    .menu {
+        flex-direction: column;
+    }
+
+    .menu a {
+        width: 100vw;
+    }
+
+    .menu-right {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+}
+/* #endregion */

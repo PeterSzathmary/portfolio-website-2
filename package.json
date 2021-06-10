@@ -1,0 +1,29 @@
+{
+    "name": "portfolio-website-2",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "my-init": "dir-init.sh && npm run tsc-init",
+        "tsc-init": "cd ./private/ts/app && tsc --init && cd ./models && tsc --init && cd ../routes && tsc --init && cd ../../client && tsc --init",
+        "tsc": "concurrently \"tsc -p ./private/ts/app\" \"tsc -p ./private/ts/client\" \"tsc -p ./private/ts/models\"",
+        "app": "nodemon ./server/app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "mongoose": "^5.12.13",
+        "socket.io": "^4.1.2"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.12",
+        "@types/p5": "^0.9.1",
+        "concurrently": "^6.2.0",
+        "nodemon": "^2.0.7",
+        "typescript": "^4.3.2"
+    }
+}
