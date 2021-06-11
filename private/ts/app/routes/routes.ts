@@ -23,14 +23,14 @@ router.get("/about", (req: express.Request, res: express.Response) => {
     });
 });
 
-router.get("/journal", async (req: express.Request, res: express.Response) => {
+router.get("/journals", async (req: express.Request, res: express.Response) => {
     if (req.body !== undefined) {
     }
 
-    const journals = await journalModel.find();
+    const journals = await journalModel.find().sort({ $natural: -1 });
     console.log("Journals => ", journals);
 
-    res.render("journal", {
+    res.render("journals", {
         title: "journals",
         year: new Date().getFullYear(),
         journals: journals,
@@ -69,26 +69,29 @@ let days = [
     "Saturday",
 ];
 let dd, mm, yyyy, today;
-router.post("/journal", async (req: express.Request, res: express.Response) => {
-    //console.log("got a POST request!");
-    //console.log("\nREQ\n");
-    //console.log(req.body);
+router.post(
+    "/newjournal",
+    async (req: express.Request, res: express.Response) => {
+        //console.log("got a POST request!");
+        //console.log("\nREQ\n");
+        //console.log(req.body);
 
-    dd = String(date.getDate()).padStart(2, "0");
-    mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
-    yyyy = date.getFullYear();
-    today = dd + "." + mm + "." + yyyy;
+        dd = String(date.getDate()).padStart(2, "0");
+        mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
+        yyyy = date.getFullYear();
+        today = dd + "." + mm + "." + yyyy;
 
-    // journal
-    const journal = req.body;
-    //console.log("j => ", journal);
-    journal["createdAt"] = today;
-    journal["day"] = days[date.getDay()];
-    const response = await journalModel.create(journal);
-    console.log(response);
+        // journal
+        const journal = req.body;
+        //console.log("j => ", journal);
+        journal["createdAt"] = today;
+        journal["day"] = days[date.getDay()];
+        const response = await journalModel.create(journal);
+        console.log(typeof response);
 
-    res.end("\nData successfully send to server!");
-});
+        res.end("\nData successfully send to server!");
+    }
+);
 
 let i = 0;
 router.post("/testing", (req: express.Request, res: express.Response) => {

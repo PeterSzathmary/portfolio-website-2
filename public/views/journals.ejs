@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head"); %>
+    <body>
+        <%- include("./partials/nav") %>
+        <main class="main main-journals">
+            <div class="wrapper">
+                <% for( let i = 0, vPoradi = journals.length - 1; i <
+                journals.length; i++, vPoradi-- ) { %>
+                <div class="journal">
+                    <div class="journal-top">
+                        <div class="journal-date">
+                            <%= journals[i].createdAt %>
+                        </div>
+                        <div class="journal-day">
+                            <%= journals[i].day %> (<%= vPoradi %>)
+                        </div>
+                    </div>
+                    <p class="journal-content"><%= journals[i].content %></p>
+                </div>
+                <% } %>
+            </div>
+        </main>
+        <%- include("./partials/footer") %>
+    </body>
+</html>

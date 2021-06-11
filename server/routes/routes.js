@@ -19,12 +19,12 @@ router.get("/about", (req, res) => {
         year: new Date().getFullYear(),
     });
 });
-router.get("/journal", async (req, res) => {
+router.get("/journals", async (req, res) => {
     if (req.body !== undefined) {
     }
-    const journals = await journalModel.find();
+    const journals = await journalModel.find().sort({ $natural: -1 });
     console.log("Journals => ", journals);
-    res.render("journal", {
+    res.render("journals", {
         title: "journals",
         year: new Date().getFullYear(),
         journals: journals,
@@ -60,7 +60,7 @@ let days = [
     "Saturday",
 ];
 let dd, mm, yyyy, today;
-router.post("/journal", async (req, res) => {
+router.post("/newjournal", async (req, res) => {
     //console.log("got a POST request!");
     //console.log("\nREQ\n");
     //console.log(req.body);
@@ -74,7 +74,7 @@ router.post("/journal", async (req, res) => {
     journal["createdAt"] = today;
     journal["day"] = days[date.getDay()];
     const response = await journalModel.create(journal);
-    console.log(response);
+    console.log(typeof response);
     res.end("\nData successfully send to server!");
 });
 let i = 0;
