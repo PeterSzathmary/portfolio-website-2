@@ -9,28 +9,36 @@ var s = function (p) {
     var width = placeForCanvas.offsetWidth;
     /*let height = placeForCanvas!.offsetHeight - footer!.offsetHeight;*/
     var height = placeForCanvas.clientHeight;
-    var size = 50;
-    var color = "#82b74b";
-    var round = 50;
+    var rects = [];
+    var count = 50;
+    var size = 20;
     p.setup = function () {
         var canvas = p.createCanvas(width, height);
         canvas.parent(placeForCanvas);
         p.noStroke();
+        for (var i = 0; i < count; i++) {
+            var x = p.random(size, width - size * 2);
+            var y = p.random(size, height - size * 2);
+            rects.push(new Rect(x, y, size, p));
+        }
+        console.log(rects);
     };
     p.draw = function () {
-        p.background(color);
-        if (p.mouseIsPressed) {
-            round = 0;
+        p.background(20);
+        for (var i = 0; i < rects.length; i++) {
+            rects[i].draw();
+            rects[i].move();
+            rects[i].checkBounds();
         }
-        else {
-            round = 50;
-        }
-        p.rect(width / 2 - size / 2, height / 2 - size / 2, size, size, round);
-        p.rect(2, 2, size, size);
-        p.rect(width - size - 2, height - size - 2, size, size);
     };
     p.mousePressed = function () { };
     p.windowResized = function () {
+        rects = [];
+        for (var i = 0; i < count; i++) {
+            var x = p.random(size, width - size * 2);
+            var y = p.random(size, height - size * 2);
+            rects.push(new Rect(x, y, size, p));
+        }
         console.log("window resized!!!");
         width = placeForCanvas.offsetWidth;
         height = placeForCanvas.clientHeight;

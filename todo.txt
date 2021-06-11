@@ -1,1 +1,2 @@
-responsive font sizes
+- responsive font sizes
+- make sketch drawing from server not the client, because everytime the home page loads sketch is restarting

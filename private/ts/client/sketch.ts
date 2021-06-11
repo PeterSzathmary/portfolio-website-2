@@ -38,33 +38,43 @@ const s = (p: P5) => {
     let width = placeForCanvas!.offsetWidth;
     /*let height = placeForCanvas!.offsetHeight - footer!.offsetHeight;*/
     let height = placeForCanvas!.clientHeight;
-    let size = 50;
-    let color = "#82b74b";
-    let round = 50;
+    let rects: Array<Rect> = [];
+    let count = 50;
+    let size = 20;
 
     p.setup = () => {
         let canvas = p.createCanvas(width, height);
         canvas.parent(placeForCanvas!);
+
         p.noStroke();
+
+        for (let i = 0; i < count; i++) {
+            let x = p.random(size, width - size * 2);
+            let y = p.random(size, height - size * 2);
+            rects.push(new Rect(x, y, size, p));
+        }
+
+        console.log(rects);
     };
 
     p.draw = () => {
-        p.background(color);
-
-        if (p.mouseIsPressed) {
-            round = 0;
-        } else {
-            round = 50;
+        p.background(20);
+        for (let i = 0; i < rects.length; i++) {
+            rects[i].draw();
+            rects[i].move();
+            rects[i].checkBounds();
         }
-
-        p.rect(width / 2 - size / 2, height / 2 - size / 2, size, size, round);
-        p.rect(2, 2, size, size);
-        p.rect(width - size - 2, height - size - 2, size, size);
     };
 
     p.mousePressed = () => {};
 
     p.windowResized = () => {
+        rects = [];
+        for (let i = 0; i < count; i++) {
+            let x = p.random(size, width - size * 2);
+            let y = p.random(size, height - size * 2);
+            rects.push(new Rect(x, y, size, p));
+        }
         console.log("window resized!!!");
         width = placeForCanvas!.offsetWidth;
         height = placeForCanvas!.clientHeight;
