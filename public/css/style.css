@@ -180,8 +180,8 @@ footer {
 }
 
 #my-picture {
-    border: 5px solid black;
-    border-radius: 50%;
+    /* border: 5px solid black; */
+    /* border-radius: 50%; */
     display: block;
     margin: 14px auto 64px auto;
     width: 25vh;

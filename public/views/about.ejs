@@ -12,11 +12,17 @@
                     possimus ea odio quisquam nihil dicta quas id nesciunt,
                     voluptatum aliquam aut ad! Natus, dicta?
                 </p>
-                <img
+                <!-- <img
                     id="my-picture"
-                    src="images/me.png"
+                    src="images/cartman.svg"
                     alt="Me on the picture."
-                />
+                /> -->
+                <object
+                    id="my-picture"
+                    alt="A picture of Cartman from South Park crying."
+                    data="images/cartman.svg"
+                    type="image/svg+xml"
+                ></object>
                 <h4>things I like</h4>
                 <ul class="about-me">
                     <li>&#8608; learning &#8606;</li>
@@ -34,5 +40,6 @@
             </div>
         </main>
         <%- include("./partials/footer") %>
+        <script src="js/cartmansHat.js"></script>
     </body>
 </html>
