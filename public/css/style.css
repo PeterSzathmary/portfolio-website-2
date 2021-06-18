@@ -257,21 +257,72 @@ footer {
 .myprojects-title {
     margin: 14px 0 14px 0;
 }
+
+.main-projects {
+    padding: 0 14px 0 14px;
+    overflow-y: scroll;
+
+    /* firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #82b74b #fff;
+}
+
+.projects-container {
+    display: grid;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin: 0 10%;
+}
+
+.project-item {
+    /* border: 5px solid green; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 56px;
+    box-sizing: border-box;
+}
+
+.project-item img {
+    width: 50%;
+    border: 1px solid rgb(40, 40, 40);
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 14px;
+}
+
+.project-info {
+    display: block;
+    box-sizing: border-box;
+    /* border: 5px solid black; */
+    width: 50%;
+    margin: 0 auto;
+    padding: 14px;
+}
 /* #endregion */
 
 /* #region Media Styles */
 @media screen and (max-width: 960px) {
-    .menu {
+    /* .menu {
         flex-direction: column;
-    }
+    } */
 
-    .menu a {
+    /* .menu a {
         width: 100vw;
     }
 
     .menu-right {
         display: block;
         width: 100%;
+    } */
+
+    .project-item img,
+    .project-info {
+        width: 100%;
+    }
+
+    .project-item {
+        margin-bottom: 28px;
     }
 }
 
@@ -297,6 +348,10 @@ footer {
     }
     .nav .menu-icon {
         display: none;
+    }
+
+    body {
+        /* background-color: red; */
     }
 }
 

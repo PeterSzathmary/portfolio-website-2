@@ -10,7 +10,7 @@ var s = function (p) {
     /*let height = placeForCanvas!.offsetHeight - footer!.offsetHeight;*/
     var height = placeForCanvas.clientHeight;
     var rects = [];
-    var count = 50;
+    var count = 5;
     var size = 20;
     p.setup = function () {
         var canvas = p.createCanvas(width, height);
@@ -43,6 +43,18 @@ var s = function (p) {
         width = placeForCanvas.offsetWidth;
         height = placeForCanvas.clientHeight;
         p.resizeCanvas(width, height);
+    };
+    p.keyPressed = function () {
+        if (p.keyCode === p.UP_ARROW) {
+            var x = p.random(size, width - size * 2);
+            var y = p.random(size, height - size * 2);
+            rects.push(new Rect(x, y, size, p));
+        }
+        else if (p.keyCode === p.DOWN_ARROW) {
+            if (rects.length > 0) {
+                rects.pop();
+            }
+        }
     };
 };
 new p5(s);

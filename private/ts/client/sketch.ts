@@ -39,7 +39,7 @@ const s = (p: P5) => {
     /*let height = placeForCanvas!.offsetHeight - footer!.offsetHeight;*/
     let height = placeForCanvas!.clientHeight;
     let rects: Array<Rect> = [];
-    let count = 50;
+    let count = 5;
     let size = 20;
 
     p.setup = () => {
@@ -79,6 +79,18 @@ const s = (p: P5) => {
         width = placeForCanvas!.offsetWidth;
         height = placeForCanvas!.clientHeight;
         p.resizeCanvas(width, height);
+    };
+
+    p.keyPressed = () => {
+        if (p.keyCode === p.UP_ARROW) {
+            let x = p.random(size, width - size * 2);
+            let y = p.random(size, height - size * 2);
+            rects.push(new Rect(x, y, size, p));
+        } else if (p.keyCode === p.DOWN_ARROW) {
+            if (rects.length > 0) {
+                rects.pop();
+            }
+        }
     };
 };
 

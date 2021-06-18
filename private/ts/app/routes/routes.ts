@@ -1,6 +1,7 @@
 import express from "express";
 import { io } from "../app.js";
 import { journal as journalModel } from "../models/journal.js";
+import fs from "fs";
 
 const router = express.Router();
 
@@ -41,9 +42,22 @@ router.get("/journals", async (req: express.Request, res: express.Response) => {
 router.get("/myProjects", (req: express.Request, res: express.Response) => {
     if (req.body !== undefined) {
     }
-    res.render("myProjects", {
-        title: "my projects",
-        year: new Date().getFullYear(),
+
+    const testFolder = "./public/images/projects";
+    fs.readdir(testFolder, (err, files) => {
+        if (err !== null) {
+            console.log(err);
+            return;
+        }
+
+        // console.log(files);
+
+        // console.log("filesArr", filesArr.length);
+        res.render("myProjects", {
+            title: "my projects",
+            year: new Date().getFullYear(),
+            projects: files,
+        });
     });
 });
 
