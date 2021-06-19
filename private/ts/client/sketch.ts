@@ -25,6 +25,10 @@ declare class p5 {
     constructor(sketch: (...args: any[]) => any, node?: HTMLElement);
 }
 
+const nav = window.document.getElementsByClassName("nav")[0] as HTMLElement;
+console.log(nav.offsetHeight);
+console.log(typeof nav);
+
 const placeForCanvas: HTMLElement | null =
     window.document.getElementById("place-for-canvas");
 // console.log(placeForCanvas!.clientHeight);
@@ -39,8 +43,9 @@ const s = (p: P5) => {
     /*let height = placeForCanvas!.offsetHeight - footer!.offsetHeight;*/
     let height = placeForCanvas!.clientHeight;
     let rects: Array<Rect> = [];
-    let count = 5;
+    let count = 50;
     let size = 20;
+    let textSize = 30;
 
     p.setup = () => {
         let canvas = p.createCanvas(width, height);
@@ -54,11 +59,22 @@ const s = (p: P5) => {
             rects.push(new Rect(x, y, size, p));
         }
 
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(textSize);
+
         console.log(rects);
     };
 
     p.draw = () => {
         p.background(20);
+
+        p.fill("rgba(255,255,255,0.25)");
+        p.text(
+            "Tap above the half to add rects.\nBelow half to remove.",
+            width / 2,
+            height / 2
+        );
+
         for (let i = 0; i < rects.length; i++) {
             rects[i].draw();
             rects[i].move();
@@ -66,7 +82,13 @@ const s = (p: P5) => {
         }
     };
 
-    p.mousePressed = () => {};
+    p.mousePressed = () => {
+        if (p.mouseY < height / 2 && p.mouseY > 0) {
+            let x = p.random(size, width - size * 2);
+            let y = p.random(size, height - size * 2);
+            rects.push(new Rect(x, y, size, p));
+        } else if (p.mouseY > height / 2 && p.mouseY < height) rects.pop();
+    };
 
     p.windowResized = () => {
         rects = [];
@@ -81,17 +103,21 @@ const s = (p: P5) => {
         p.resizeCanvas(width, height);
     };
 
-    p.keyPressed = () => {
-        if (p.keyCode === p.UP_ARROW) {
+    p.touchStarted = (e: TouchEvent) => {
+        let yPos = e.targetTouches[0].clientY - nav.offsetHeight;
+        if (yPos < height / 2 && yPos > 0) {
             let x = p.random(size, width - size * 2);
             let y = p.random(size, height - size * 2);
             rects.push(new Rect(x, y, size, p));
-        } else if (p.keyCode === p.DOWN_ARROW) {
-            if (rects.length > 0) {
-                rects.pop();
-            }
-        }
+        } else if (yPos > height / 2 && yPos < height) rects.pop();
+        // console.log("nav.offsetHeight", nav.offsetHeight);
+        // console.log("e.targetTouches[0].clientX", e.targetTouches[0].clientX);
+        // console.log("e.targetTouches[0].clientY", e.targetTouches[0].clientY);
+        // console.log("e.touches", e.touches.length);
+        // console.log("e.targetTouches[0]", e.targetTouches[0]);
     };
+
+    p.touchEnded = (e: TouchEvent) => {};
 };
 
 new p5(s);

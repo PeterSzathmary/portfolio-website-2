@@ -1,11 +1,11 @@
 import requests
 import sys
 
-lorem = "Today I have tried some Pandas with python. It's cool!"
+lorem = "Idem si kúpiť knihu o anatómii."
 
 if __name__ == "__main__":
     #print(f"Arguments count: {len(sys.argv)}")
-    url = "http://localhost:3000/newjournal"
+    url = "http://18.218.116.226:3000/newjournal"
     if len(sys.argv) > 1:
         print(f"Sending to server {sys.argv[1]}")
         obj = {"content": sys.argv[1]}

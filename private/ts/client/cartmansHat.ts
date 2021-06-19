@@ -12,7 +12,7 @@ function getRandomInt(min: number, max: number) {
 }
 
 let svg = document.getElementById("my-picture") as HTMLObjectElement;
-console.log("svg", svg);
+// console.log("svg", svg);
 
 // It's important to add an load event listener to the object,
 // as it will load the svg doc asynchronously
@@ -21,14 +21,14 @@ svg!.addEventListener(
     function () {
         // get the inner DOM of alpha.svg
         let svgDoc = svg!.contentDocument;
-        console.log("svgDoc", svgDoc);
-        console.log("svgDoc.all", svgDoc!.all);
-        console.log("svgDoc.all[87]", svgDoc!.all[87]);
-        console.log("svgDoc.all.length", svgDoc!.all.length);
+        // console.log("svgDoc", svgDoc);
+        // console.log("svgDoc.all", svgDoc!.all);
+        // console.log("svgDoc.all[87]", svgDoc!.all[87]);
+        // console.log("svgDoc.all.length", svgDoc!.all.length);
 
         // get the inner element by id
         let colorHat = svgDoc!.getElementById("ColorHat");
-        console.log(colorHat);
+        // console.log(colorHat);
 
         colorHat!.setAttribute(
             "style",

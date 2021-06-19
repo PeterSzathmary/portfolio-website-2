@@ -12,19 +12,19 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 var svg = document.getElementById("my-picture");
-console.log("svg", svg);
+// console.log("svg", svg);
 // It's important to add an load event listener to the object,
 // as it will load the svg doc asynchronously
 svg.addEventListener("load", function () {
     // get the inner DOM of alpha.svg
     var svgDoc = svg.contentDocument;
-    console.log("svgDoc", svgDoc);
-    console.log("svgDoc.all", svgDoc.all);
-    console.log("svgDoc.all[87]", svgDoc.all[87]);
-    console.log("svgDoc.all.length", svgDoc.all.length);
+    // console.log("svgDoc", svgDoc);
+    // console.log("svgDoc.all", svgDoc!.all);
+    // console.log("svgDoc.all[87]", svgDoc!.all[87]);
+    // console.log("svgDoc.all.length", svgDoc!.all.length);
     // get the inner element by id
     var colorHat = svgDoc.getElementById("ColorHat");
-    console.log(colorHat);
+    // console.log(colorHat);
     colorHat.setAttribute("style", "fill: rgb(" +
         getRandomInt(0, 255) +
         "," +

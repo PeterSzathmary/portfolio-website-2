@@ -1,4 +1,7 @@
 "use strict";
+var nav = window.document.getElementsByClassName("nav")[0];
+console.log(nav.offsetHeight);
+console.log(typeof nav);
 var placeForCanvas = window.document.getElementById("place-for-canvas");
 // console.log(placeForCanvas!.clientHeight);
 // console.log(placeForCanvas!.offsetHeight);
@@ -10,8 +13,9 @@ var s = function (p) {
     /*let height = placeForCanvas!.offsetHeight - footer!.offsetHeight;*/
     var height = placeForCanvas.clientHeight;
     var rects = [];
-    var count = 5;
+    var count = 50;
     var size = 20;
+    var textSize = 30;
     p.setup = function () {
         var canvas = p.createCanvas(width, height);
         canvas.parent(placeForCanvas);
@@ -21,17 +25,29 @@ var s = function (p) {
             var y = p.random(size, height - size * 2);
             rects.push(new Rect(x, y, size, p));
         }
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(textSize);
         console.log(rects);
     };
     p.draw = function () {
         p.background(20);
+        p.fill("rgba(255,255,255,0.25)");
+        p.text("Tap above the half to add rects.\nBelow half to remove.", width / 2, height / 2);
         for (var i = 0; i < rects.length; i++) {
             rects[i].draw();
             rects[i].move();
             rects[i].checkBounds();
         }
     };
-    p.mousePressed = function () { };
+    p.mousePressed = function () {
+        if (p.mouseY < height / 2 && p.mouseY > 0) {
+            var x = p.random(size, width - size * 2);
+            var y = p.random(size, height - size * 2);
+            rects.push(new Rect(x, y, size, p));
+        }
+        else if (p.mouseY > height / 2 && p.mouseY < height)
+            rects.pop();
+    };
     p.windowResized = function () {
         rects = [];
         for (var i = 0; i < count; i++) {
@@ -44,17 +60,21 @@ var s = function (p) {
         height = placeForCanvas.clientHeight;
         p.resizeCanvas(width, height);
     };
-    p.keyPressed = function () {
-        if (p.keyCode === p.UP_ARROW) {
+    p.touchStarted = function (e) {
+        var yPos = e.targetTouches[0].clientY - nav.offsetHeight;
+        if (yPos < height / 2 && yPos > 0) {
             var x = p.random(size, width - size * 2);
             var y = p.random(size, height - size * 2);
             rects.push(new Rect(x, y, size, p));
         }
-        else if (p.keyCode === p.DOWN_ARROW) {
-            if (rects.length > 0) {
-                rects.pop();
-            }
-        }
+        else if (yPos > height / 2 && yPos < height)
+            rects.pop();
+        // console.log("nav.offsetHeight", nav.offsetHeight);
+        // console.log("e.targetTouches[0].clientX", e.targetTouches[0].clientX);
+        // console.log("e.targetTouches[0].clientY", e.targetTouches[0].clientY);
+        // console.log("e.touches", e.touches.length);
+        // console.log("e.targetTouches[0]", e.targetTouches[0]);
     };
+    p.touchEnded = function (e) { };
 };
 new p5(s);

@@ -35,18 +35,25 @@ router.get("/journals", async (req, res) => {
 router.get("/myProjects", (req, res) => {
     if (req.body !== undefined) {
     }
-    const testFolder = "./public/images/projects";
-    fs.readdir(testFolder, (err, files) => {
+    fs.readdir("./public/images/projects", (err, projectsImages) => {
         if (err !== null) {
             console.log(err);
             return;
         }
         // console.log(files);
         // console.log("filesArr", filesArr.length);
+        const projectsComments = JSON.parse(fs.readFileSync("./public/projectsComments.json").toString());
+        // console.log("projectComments.comments");
+        // console.log(projectsComments.comments);
+        //let projectsComments = ["I made a Cartman in Illustrator."];
+        let data = {
+            projectsImages: projectsImages,
+            projectsComments: projectsComments.comments,
+        };
         res.render("myProjects", {
             title: "my projects",
             year: new Date().getFullYear(),
-            projects: files,
+            data: data,
         });
     });
 });

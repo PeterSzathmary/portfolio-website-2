@@ -5,20 +5,15 @@
         <%- include("./partials/nav") %>
         <main class="main main-projects">
             <h3 class="myprojects-title">my projects</h3>
+            <!-- <h1><%= data.projectsComments[1] %></h1> -->
             <div class="projects-container">
-                <% for( let i = 0; i < projects.length; i++ ) { %>
+                <% for( let i = 0; i < data.projectsImages.length; i++ ) { %>
                 <div class="project-item">
                     <img
-                        src="images/projects/<%= projects[i] %>"
+                        src="images/projects/<%= data.projectsImages[i] %>"
                         alt="Image <%= i+1 %>"
                     />
-                    <p class="project-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Incidunt iure quia obcaecati voluptatem delectus culpa
-                        saepe illo sint molestiae, qui laborum unde reiciendis.
-                        Quasi, nostrum numquam. Natus quibusdam eaque quis. <%=
-                        i+1 %>
-                    </p>
+                    <p class="project-info"><%= data.projectsComments[i] %></p>
                 </div>
                 <% } %>
             </div>
