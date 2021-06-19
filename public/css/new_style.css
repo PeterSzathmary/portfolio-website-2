@@ -34,122 +34,6 @@ footer {
     text-align: center;
 }
 
-/* #region Menu */
-.nav {
-    background-color: #405d27;
-    /* background-color: #ddd; */
-}
-
-.nav ul {
-    list-style: none;
-    overflow: hidden;
-    background-color: rgb(40, 40, 40);
-}
-
-.nav li a {
-    display: block;
-    padding: 20px 0 20px 0;
-    text-decoration: none;
-}
-
-.nav li a:hover,
-.nav .menu-btn:hover {
-    background-color: #82b74b;
-    color: rgb(40, 40, 40);
-}
-
-.nav .logo {
-    box-sizing: border-box;
-    display: block;
-    float: left;
-    /* font-size: 2em; */
-    height: 100%;
-    padding: 20px 20px;
-    text-decoration: none;
-}
-
-.nav .logo:hover {
-    background-color: #82b74b;
-    color: rgb(40, 40, 40);
-}
-
-/* menu */
-
-.nav .menu {
-    clear: both;
-    max-height: 0;
-    transition: max-height 0.2s ease-out;
-}
-
-/* menu icon */
-
-.nav .menu-icon {
-    cursor: pointer;
-    float: right;
-    padding: 28px 20px;
-    position: relative;
-    user-select: none;
-}
-
-.nav .menu-icon:hover {
-    background-color: #82b74b;
-    color: rgb(40, 40, 40);
-}
-
-.nav .menu-icon .nav-icon {
-    background-color: #fff;
-    display: block;
-    height: 2px;
-    position: relative;
-    transition: background 0.2s ease-out;
-    width: 18px;
-}
-
-.nav .menu-icon .nav-icon:before,
-.nav .menu-icon .nav-icon:after {
-    background-color: #fff;
-    content: "";
-    display: block;
-    height: 100%;
-    position: absolute;
-    transition: all 0.2s ease-out;
-    width: 100%;
-}
-
-.nav .menu-icon .nav-icon:before {
-    top: 5px;
-}
-
-.nav .menu-icon .nav-icon:after {
-    top: -5px;
-}
-
-/* menu btn */
-
-.nav .menu-btn {
-    display: none;
-}
-
-.nav .menu-btn:checked ~ .menu {
-    max-height: 240px;
-}
-
-.nav .menu-btn:checked ~ .menu-icon .nav-icon {
-    background: transparent;
-}
-
-.nav .menu-btn:checked ~ .menu-icon .nav-icon:before {
-    transform: rotate(-45deg);
-    top: 0;
-}
-
-.nav .menu-btn:checked ~ .menu-icon .nav-icon:after {
-    transform: rotate(45deg);
-    top: 0;
-}
-/* #endregion */
-
-/* Home Page */
 #place-for-canvas,
 .main {
     flex-grow: 1;
@@ -244,8 +128,8 @@ footer {
     overflow-x: auto;
     /*min-height: 1.3em;*/
     /*padding-bottom: 5px;*/
-    text-align-last: center;
-    margin: 14px 0 0 0;
+    text-align: center;
+    margin: 14px 36px 0 36px;
 
     /* firefox */
     scrollbar-width: thin;
@@ -300,6 +184,107 @@ footer {
     padding: 14px;
 }
 /* #endregion */
+
+/* ******************* */
+/* ******************* */
+/* ******************* */
+/* ******************* */
+/* ******************* */
+/* ******************* */
+/* ******************* */
+
+a {
+    color: #fff;
+}
+
+.nav {
+    background-color: #405d27;
+}
+
+.nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: rgb(40, 40, 40);
+}
+
+.nav ul a {
+    display: block;
+    outline: 1px solid #82b74b;
+    padding: 20px;
+    border-right: 1px solid blue;
+    text-decoration: none;
+}
+
+.nav ul a:hover {
+    background-color: #82b74b;
+    color: rgb(40, 40, 40);
+}
+
+.nav .logo {
+    float: left;
+    display: block;
+    font-size: 2em;
+    padding: 10px 20px;
+}
+
+.nav .logo:hover {
+    background-color: #82b74b;
+    color: rgb(40, 40, 40);
+}
+
+.nav .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+}
+
+.nav .menu-icon {
+    padding: 28px 20px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+
+.nav .menu-icon .nav-icon {
+    background-color: #333;
+    display: block;
+    height: 2px;
+    width: 18px;
+    position: relative;
+    transition: background 0.2s ease-out;
+}
+
+.nav .menu-icon .nav-icon:before {
+    background-color: #333;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.2 ease-out;
+    top: 5px;
+}
+
+.nav .menu-icon .nav-icon:after {
+    background-color: #333;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.2 ease-out;
+    top: -5px;
+}
+
+.nav .menu-btn {
+    display: none;
+}
+
+.nav .menu-btn:checked ~ .menu {
+    max-height: 240px;
+}
 
 /* #region Media Styles */
 @media screen and (max-width: 960px) {
