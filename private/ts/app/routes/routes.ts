@@ -86,7 +86,7 @@ router.get("/testing", (req: express.Request, res: express.Response) => {
 //#endregion
 
 //#region POST routes
-let date = new Date();
+let date: Date;
 let days = [
     "Sunday",
     "Monday",
@@ -103,15 +103,25 @@ router.post(
         //console.log("got a POST request!");
         //console.log("\nREQ\n");
         //console.log(req.body);
-
+        date = new Date();
         dd = String(date.getDate()).padStart(2, "0");
         mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
         yyyy = date.getFullYear();
         today = dd + "." + mm + "." + yyyy;
 
+        console.log(req.body);
+        // console.log(typeof req.body);
+        // let t1 = req.body;
+        // try {
+        //     let t2 = JSON.stringify(req.body);
+        //     console.log(t2);
+        // } catch (error) {
+        //     console.log(error);
+        // }
+
         // journal
         const journal = req.body;
-        //console.log("j => ", journal);
+        console.log("j => ", journal);
         journal["createdAt"] = today;
         journal["day"] = days[date.getDay()];
         const response = await journalModel.create(journal);

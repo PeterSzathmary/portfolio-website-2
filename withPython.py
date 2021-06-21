@@ -1,9 +1,9 @@
 import requests
 import sys
 
-lorem = "This is amazing! I learned something new again from here: https://the.earth.li/~sgtatham/putty/0.60/htmldoc/Chapter5.html"
+lorem = "Mondjak még egy viccet Murray? - Mit kapsz, hogyha keresztezel egy magányos elmebeteg embert egy társadalommal, ami semmibe veszi és hulladékként kezeli? - Megmondom én hogy mit kapsz: azt kapod, amit megérdemelsz!"
 
-to_public = True
+to_public = False
 
 if __name__ == "__main__":
     #print(f"Arguments count: {len(sys.argv)}")
