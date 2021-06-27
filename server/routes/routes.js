@@ -24,7 +24,7 @@ router.get("/journals", async (req, res) => {
     if (req.body !== undefined) {
     }
     const journals = await journalModel.find().sort({ $natural: -1 });
-    console.log("Journals => ", journals);
+    //console.log("Journals => ", journals);
     res.render("journals", {
         title: "journals",
         year: new Date().getFullYear(),
@@ -79,30 +79,18 @@ let days = [
 ];
 let dd, mm, yyyy, today;
 router.post("/newjournal", async (req, res) => {
-    //console.log("got a POST request!");
-    //console.log("\nREQ\n");
-    //console.log(req.body);
     date = new Date();
     dd = String(date.getDate()).padStart(2, "0");
     mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
     yyyy = date.getFullYear();
     today = dd + "." + mm + "." + yyyy;
-    console.log(req.body);
-    // console.log(typeof req.body);
-    // let t1 = req.body;
-    // try {
-    //     let t2 = JSON.stringify(req.body);
-    //     console.log(t2);
-    // } catch (error) {
-    //     console.log(error);
-    // }
     // journal
     const journal = req.body;
-    console.log("j => ", journal);
+    let content = JSON.parse(JSON.stringify(req.body)).content;
+    journal["content"] = content;
     journal["createdAt"] = today;
     journal["day"] = days[date.getDay()];
     const response = await journalModel.create(journal);
-    console.log(typeof response);
     res.end("\nData successfully send to server!");
 });
 let i = 0;

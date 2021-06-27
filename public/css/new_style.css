@@ -124,6 +124,7 @@ footer {
 }
 
 .journal-content {
+    white-space: pre-wrap;
     /*font-size: 1.3em;*/
     overflow-x: auto;
     /*min-height: 1.3em;*/
