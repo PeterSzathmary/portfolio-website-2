@@ -15,7 +15,7 @@ var s = function (p) {
     var rects = [];
     var count = 50;
     var size = 20;
-    var textSize = 30;
+    var textSize;
     p.setup = function () {
         var canvas = p.createCanvas(width, height);
         canvas.parent(placeForCanvas);
@@ -25,6 +25,10 @@ var s = function (p) {
             var y = p.random(size, height - size * 2);
             rects.push(new Rect(x, y, size, p));
         }
+        if (width >= 480)
+            textSize = 30;
+        else
+            textSize = 22;
         p.textAlign(p.CENTER, p.CENTER);
         p.textSize(textSize);
         console.log(rects);

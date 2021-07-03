@@ -45,7 +45,7 @@ const s = (p: P5) => {
     let rects: Array<Rect> = [];
     let count = 50;
     let size = 20;
-    let textSize = 30;
+    let textSize;
 
     p.setup = () => {
         let canvas = p.createCanvas(width, height);
@@ -58,6 +58,9 @@ const s = (p: P5) => {
             let y = p.random(size, height - size * 2);
             rects.push(new Rect(x, y, size, p));
         }
+
+        if (width >= 480) textSize = 30;
+        else textSize = 22;
 
         p.textAlign(p.CENTER, p.CENTER);
         p.textSize(textSize);
