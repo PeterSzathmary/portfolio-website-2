@@ -6,6 +6,7 @@ import fs from "fs";
 const router = express.Router();
 
 //#region GET routes
+// Root Route.
 router.get("/", (req: express.Request, res: express.Response) => {
     if (req.body !== undefined) {
     }
@@ -15,6 +16,7 @@ router.get("/", (req: express.Request, res: express.Response) => {
     });
 });
 
+// About Route.
 router.get("/about", (req: express.Request, res: express.Response) => {
     if (req.body !== undefined) {
     }
@@ -24,6 +26,7 @@ router.get("/about", (req: express.Request, res: express.Response) => {
     });
 });
 
+// Journals Route.
 router.get("/journals", async (req: express.Request, res: express.Response) => {
     if (req.body !== undefined) {
     }
@@ -39,6 +42,7 @@ router.get("/journals", async (req: express.Request, res: express.Response) => {
     // res.json({ hello: "my name is" });
 });
 
+// My Projects Route.
 router.get("/myProjects", (req: express.Request, res: express.Response) => {
     if (req.body !== undefined) {
     }
@@ -75,6 +79,7 @@ router.get("/myProjects", (req: express.Request, res: express.Response) => {
     });
 });
 
+// Testing Route.
 router.get("/testing", (req: express.Request, res: express.Response) => {
     if (req.body !== undefined) {
     }
@@ -96,6 +101,8 @@ let days = [
     "Friday",
     "Saturday",
 ];
+
+// New Journal Route.
 let dd, mm, yyyy, today;
 router.post(
     "/newjournal",
@@ -119,6 +126,7 @@ router.post(
     }
 );
 
+// Testing Route.
 let i = 0;
 router.post("/testing", (req: express.Request, res: express.Response) => {
     console.log("got a POST request");

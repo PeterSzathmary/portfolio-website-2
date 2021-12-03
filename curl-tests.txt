@@ -1,9 +1,9 @@
 curl -X POST -H "Content-Type: application/json; charset=utf-8" -d '{"name": "voldemort"}' http://localhost:3000/testing
 
-curl -X POST -H "Content-Type: application/json; charset=utf-8" --data-urlencode '{"content": "Test 123!"}' http://localhost:3000/newjournal
+curl -X POST -H "Content-Type: application/json; charset=utf-8" --data-urlencode '{\"content\": \"Test 123!\"}' http://localhost:3000/newjournal
 
-curl -X POST -H "Content-Type: application/json; charset=utf-8" --data-urlencode '{"content": "čťžňäô"}' http://localhost:3000/newjournal
+curl -X POST -H "Content-Type: application/json; charset=utf-8" --data-urlencode '{\"content\": \"čťžňäô\"}' http://localhost:3000/newjournal
 
-curl -X POST -H "Content-Type: application/json; charset=utf-8" -d '{"content": "čťžňäô"}' http://localhost:3000/newjournal
+curl -X POST -H "Content-Type: application/json; charset=utf-8" -d '{\"content\": \"čťžňäô\"}' http://localhost:3000/newjournal
 
-curl -X POST -H "Content-Type: application/json; charset=utf-8" -d '{"content": "My website will soon be finished!"}' http://localhost:3000/newjournal
+curl -X POST -H "Content-Type: application/json; charset=utf-8" -d '{\"content\": \"My website will soon be finished!\"}' http://localhost:3000/newjournal

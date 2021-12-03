@@ -290,7 +290,7 @@ a {
 /* #region Media Styles */
 @media screen and (max-width: 960px) {
     body {
-        background-color: #82b74b;
+        /* background-color: #82b74b; */
     }
 
     .project-item img,
@@ -305,7 +305,7 @@ a {
 
 @media screen and (min-width: 960px) {
     body {
-        background-color: #df8c8c;
+        /* background-color: #df8c8c; */
     }
 
     .wrapper {
